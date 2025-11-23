@@ -1,12 +1,16 @@
 import { useState } from 'react'
+import { BrowserRouter } from 'react-router-dom'
 import './App.css'
 import Header from './Header'
+import SearchPage from './SearchPage'
 
 const TestElement = () => {
   return (
     <>
       <Header>
       </Header>
+      <SearchPage>
+      </SearchPage>
     </>
   )
 }
@@ -16,8 +20,10 @@ function App() {
 
   return (
     <>
-      <TestElement>
-      </TestElement>
+      <BrowserRouter>
+        <TestElement>
+        </TestElement>
+      </BrowserRouter>
     </>
   )
 }
