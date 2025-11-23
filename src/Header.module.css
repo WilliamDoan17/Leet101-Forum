@@ -1,0 +1,28 @@
+.container {
+    margin: 0;
+    border-bottom: 1px solid rgb(209 213 219);
+    padding: .5rem 1.5rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.app-info {
+    text-align: left;
+}
+
+.app-name {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #6366f1;
+}
+
+.app-author {
+    margin: -4px 0 0;
+    font-size: .75rem;
+    font-weight: 500;
+    color: #374151;
+}
