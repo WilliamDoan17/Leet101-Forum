@@ -1,6 +1,5 @@
 .container {
     border-right: 1px solid rgb(209 213 219);
-    border-bottom: 1px solid rgb(209 213 219);
     width: 16rem;
 }
 
@@ -82,12 +81,12 @@
 }
 
 .topics-container {
-    margin-top: .5rem;
+    margin-top: .25rem;
     width: 100%;
 }
 
 .topic-checkbox-container {
-    margin-top: .25rem;
+    margin-top: .5rem;
     display: flex;
     flex-direction: row;
     align-items: center;

@@ -16,5 +16,4 @@ export const initialTopics = [
   { name: "Math", chosen: true },
   { name: "Trie", chosen: true },
   { name: "Binary", chosen: true },
-  
 ]

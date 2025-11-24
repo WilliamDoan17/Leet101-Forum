@@ -1,5 +1,38 @@
 .container {
     padding: 1.5rem 1.5rem;
     display: flex;
+    flex-direction: column;
     flex: 1;
+    background-color: rgb(249, 250, 251);
 }
+
+.search-page-heading {
+    font-size: 3rem;
+    font-weight: 700;
+    line-height: 1;
+    color: rgb(0, 0, 0);
+    margin: 0px;
+    padding: 0px;
+}
+
+.search-page-subheading {
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: rgb(107, 114, 128);
+    margin: 0.5rem 0px 0px;
+    padding: 0px;
+}
+
+.result-container {
+    margin-top: 1.5rem;
+    border: 1px solid rgb(209 213 219);
+    padding: 1rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    gap: .5rem;
+    background-color: white;
+}
+
