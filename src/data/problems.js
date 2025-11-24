@@ -108,7 +108,6 @@ export const initialProblems = [
   { name: "Reorder List", difficulty: "medium", topic: "Linked List", source: "https://leetcode.com/problems/reorder-list/" },
   { name: "Flatten a Multilevel Doubly Linked List", difficulty: "medium", topic: "Linked List", source: "https://leetcode.com/problems/flatten-a-multilevel-doubly-linked-list/" },
   { name: "LRU Cache", difficulty: "medium", topic: "Linked List", source: "https://leetcode.com/problems/lru-cache/" },
-  { name: "Swap Nodes in Pairs", difficulty: "medium", topic: "Linked List", source: "https://leetcode.com/problems/swap-nodes-in-pairs/" },
   { name: "Odd Even Linked List", difficulty: "medium", topic: "Linked List", source: "https://leetcode.com/problems/odd-even-linked-list/" },
   { name: "Partition List", difficulty: "medium", topic: "Linked List", source: "https://leetcode.com/problems/partition-list/" },
 
@@ -399,4 +398,4 @@ export const initialProblems = [
   // Hard (2)
   { name: "Divide Two Integers", difficulty: "hard", topic: "Binary", source: "https://leetcode.com/problems/divide-two-integers/" },
   { name: "Maximum Product of Word Lengths", difficulty: "hard", topic: "Binary", source: "https://leetcode.com/problems/maximum-product-of-word-lengths/" }
-]; 
+];

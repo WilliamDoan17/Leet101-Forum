@@ -2,15 +2,59 @@ import { useContext } from 'react'
 import styles from './SearchPage.module.css'
 import { PreferenceContext } from './usePreference'
 
-const ResultCard = ({ problem }) => {
+const ResultCard = ({ problem, index }) => {
     const {name, difficulty, topic} = problem;
+    const { difficulties } = useContext(PreferenceContext)
+
+    const getDiffifcultyLabelColor = () => {
+        const { labelColor } = difficulties.find(({ level }) => level === difficulty);
+        return labelColor
+    }
+
+    const difficultyLabelColor = getDiffifcultyLabelColor();
+
+    const DifficultyTag = () => {
+        const DifficultyTagStyles = {
+            color: difficultyLabelColor,
+        }
+
+        return (
+            <span
+                className = {`${styles['difficulty-tag']}`}
+                style = {DifficultyTagStyles}
+            >
+                {difficulty}
+            </span>
+        )
+    }
 
     return (
         <>
             <div
                 className = {`${styles['result-card']}`}
             >
-                <p>{name}</p>
+                <span
+                    className = {`${styles['result-index']}`}
+                >
+                    {index + 1}
+                </span>
+                <div
+                    className = {`${styles['result-info']}`}
+                >
+                    <a
+                        className = {`${styles['result-name']}`}
+                        href = {`/solution/${name}`}
+                    >
+                        {name}
+                    </a>
+                    <div
+                        className = {`${styles['result-tag-container']}`}
+                    >
+                        <DifficultyTag>
+                        </DifficultyTag>
+                    </div>
+                </div>
+                
 
             </div>
         </>
@@ -57,11 +101,12 @@ const SearchPage = () => {
                         className = {`${styles['result-card-container']}`}
                     >
                         {
-                            dipslayProblems.map((problem) => {
+                            dipslayProblems.map((problem, index) => {
                                 return (
                                     <ResultCard
                                         key = {problem.name}
                                         problem = {problem}
+                                        index = {index}
                                     >
 
                                     </ResultCard>

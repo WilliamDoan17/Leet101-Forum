@@ -2,6 +2,7 @@ import React, { useState, createContext, useEffect, useCallback } from "react";
 import { initialDifficulties } from "./data/difficulties";
 import { initialTopics } from "./data/topics";
 import { initialProblems } from './data/problems'
+import { useNavigate } from "react-router-dom";
 
 export const PreferenceContext = createContext();
 
@@ -10,6 +11,7 @@ export const PreferenceProvider = ({ children }) => {
     const [difficulties, setDifficulties] = useState([...initialDifficulties]);
     const [topics, setTopics] = useState([...initialTopics]);
     const [problems, setProblems] = useState([...initialProblems]);
+    const navigate = useNavigate();
 
     const getProblemsFromPreferences = (keyword, difficulties, topics, problems) => {
         const newDifficultyLevels = difficulties
@@ -47,6 +49,7 @@ export const PreferenceProvider = ({ children }) => {
     useEffect(() => {
         const newProblems = getProblemsFromPreferences(keyword, difficulties, topics, problems);
         setProblems(newProblems);
+        navigate("/");
     }, [keyword, difficulties, topics]);
 
     const contextValue = {

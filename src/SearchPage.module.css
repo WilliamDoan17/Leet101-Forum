@@ -50,5 +50,54 @@
 .result-card {
     border: 1px solid rgb(209 213 219);
     padding: .5rem .75rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
     width: 100%;
+    font-weight: 500;
+}
+
+.result-index {
+    width: 2rem;
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+    text-align: center;
+    color: #4b5563;
+}
+
+.result-info {
+    margin: 0 0 0 1.5rem;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    flex: 1;
+}
+
+.result-name {
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 1.5rem;
+    text-transform: capitalize;
+    text-decoration: none;
+    color: #4f46e5;
+    cursor: pointer;
+}
+
+.result-name:hover {
+    text-decoration: underline;
+}
+
+.result-tag-container {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.difficulty-tag {
+    font-size: .875rem;
+    font-weight: 500;
+    line-height: .875rem;
+    text-transform: capitalize;
 }
