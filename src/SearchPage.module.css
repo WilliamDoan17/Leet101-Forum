@@ -28,11 +28,27 @@
     margin-top: 1.5rem;
     border: 1px solid rgb(209 213 219);
     padding: 1rem 1.5rem;
+    background-color: white;
+}
+
+.result-container-heading {
+    margin: 0;
+    font-size: 1.75rem;
+    font-weight: 600;
+    line-height: 1;
+}
+
+.result-card-container {
+    margin-top: 1.5rem;
     display: flex;
     flex-direction: column;
     align-items: start;
     justify-content: start;
-    gap: .5rem;
-    background-color: white;
+    gap: 1rem;
 }
 
+.result-card {
+    border: 1px solid rgb(209 213 219);
+    padding: .5rem .75rem;
+    width: 100%;
+}

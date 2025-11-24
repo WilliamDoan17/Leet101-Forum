@@ -11,7 +11,7 @@ export const PreferenceProvider = ({ children }) => {
     const [topics, setTopics] = useState([...initialTopics]);
     const [problems, setProblems] = useState([...initialProblems]);
 
-    const getProblemsFromPreferences = useCallback((keyword, difficulties, topics, problems) => {
+    const getProblemsFromPreferences = (keyword, difficulties, topics, problems) => {
         const newDifficultyLevels = difficulties
             .filter(({ chosen }) => chosen)
             .map(({ level }) => level);
@@ -26,7 +26,6 @@ export const PreferenceProvider = ({ children }) => {
         };
 
         const checkDifficulty = ({ difficulty }) => {
-            if (newDifficultyLevels.length === 0) return true;
             return newDifficultyLevels.includes(difficulty);
         };
 
@@ -43,12 +42,12 @@ export const PreferenceProvider = ({ children }) => {
             ...problem,
             chosen: checkPreferences(problem),
         }));
-    }, []);
+    }
 
     useEffect(() => {
         const newProblems = getProblemsFromPreferences(keyword, difficulties, topics, problems);
         setProblems(newProblems);
-    }, [keyword, difficulties, topics, getProblemsFromPreferences]);
+    }, [keyword, difficulties, topics]);
 
     const contextValue = {
         keyword,

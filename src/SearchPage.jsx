@@ -2,9 +2,33 @@ import { useContext } from 'react'
 import styles from './SearchPage.module.css'
 import { PreferenceContext } from './usePreference'
 
+const ResultCard = ({ problem }) => {
+    const {name, difficulty, topic} = problem;
+
+    return (
+        <>
+            <div
+                className = {`${styles['result-card']}`}
+            >
+                <p>{name}</p>
+
+            </div>
+        </>
+    )
+}
+
 const SearchPage = () => {
     const { keyword, difficulties, topics, problems } = useContext(PreferenceContext);
-    console.log(problems);
+
+    const getDisplayProblems = () => {
+        const resultProblems = problems
+            .filter(({ chosen }) => chosen)
+            .map(problem => problem);
+        return resultProblems
+    }
+
+    const dipslayProblems = getDisplayProblems();
+    console.log(dipslayProblems)
 
     return (
         <>
@@ -24,7 +48,27 @@ const SearchPage = () => {
                 <div
                     className = {`${styles['result-container']}`}
                 >
-                    
+                    <h2
+                        className = {`${styles['result-container-heading']}`}
+                    >
+                        Solutions
+                    </h2>
+                    <div
+                        className = {`${styles['result-card-container']}`}
+                    >
+                        {
+                            dipslayProblems.map((problem) => {
+                                return (
+                                    <ResultCard
+                                        key = {problem.name}
+                                        problem = {problem}
+                                    >
+
+                                    </ResultCard>
+                                )
+                            })
+                        }
+                    </div>
                 </div>
             </div>
         </>
