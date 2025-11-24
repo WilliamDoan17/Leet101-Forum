@@ -74,6 +74,7 @@ const DifficultyCheckbox = ({ difficulty, onChange }) => {
                     checked = {chosen}
                     onChange = {toggleCheckbox}
                     id = {level}
+                    name = {level}
                 >
                 </input>
                 <label
@@ -88,7 +89,7 @@ const DifficultyCheckbox = ({ difficulty, onChange }) => {
     )
 }
 
-const DifficultyPreference = () => {
+const DifficultiesPreference = () => {
     const { difficulties, setDifficulties } = useContext(PreferenceContext);
 
     const handleChangeDifficultyChosen = (difficulty, newChecked) => {
@@ -127,6 +128,87 @@ const DifficultyPreference = () => {
     ) 
 }
 
+const TopicCheckbox = ({ topic, onChange }) => {
+    const { name, chosen } = topic;
+
+    const toggleCheckbox = (e) => {
+        onChange && onChange(topic, e.target.checked)
+    }
+
+
+    return (
+        <>
+            <div
+                className = {`${styles['topic-checkbox-container']}`}
+            >
+                <input
+                    className = {`${styles['topic-checkbox-input']}`}
+                    type = "checkbox"
+                    checked = {chosen}
+                    onChange = {toggleCheckbox}
+                    id = {name}
+                    name = {name}
+                >
+                </input>
+                <label
+                    className = {`${styles['topic-checkbox-label']}`}
+                    htmlFor = {name}
+                >
+                    {name}
+                </label>
+            </div>
+        </>
+    )
+}
+
+const TopicsPreference = () => {
+    const { topics, setTopics } = useContext(PreferenceContext);
+
+    const handleChangeTopicsChosen = (topic, newChecked) => {
+        const newTopic = {
+            ...topic,
+            chosen: newChecked,
+        }
+        
+        const newTopics = topics.map((_topic) => {
+            if (_topic === topic) return newTopic
+            return _topic
+        })
+        
+        setTopics(newTopics)
+    }
+  
+    return (
+        <>
+            <div
+                className = {`${styles['preference-container']}`}
+            >
+                <legend
+                    className = {`${styles['preference-label']}`}
+                >
+                    Topics
+                </legend>
+                <div
+                    className = {`${styles['topics-container']}`}
+                >
+                    {
+                        topics.map((topic) => {
+                            return (
+                                <TopicCheckbox
+                                    key = {topic.name}
+                                    topic = {topic}
+                                    onChange = {handleChangeTopicsChosen}
+                                >
+                                </TopicCheckbox>
+                            )
+                        })
+                    }
+                </div>
+            </div>
+        </>
+    )
+}
+
 const Preferences = () => {
     return (
         <>
@@ -143,8 +225,9 @@ const Preferences = () => {
                     </p>
                     <KeywordPreference>
                     </KeywordPreference>
-                    <DifficultyPreference>
-                    </DifficultyPreference>
+                    <DifficultiesPreference>
+                    </DifficultiesPreference>
+                    <TopicsPreference></TopicsPreference>
                 </div>
             </div>
         </>

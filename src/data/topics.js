@@ -1,0 +1,20 @@
+export const initialTopics = [
+  { name: "Array", chosen: true },
+  { name: "Hash Table", chosen: true },
+  { name: "String", chosen: true },
+  { name: "Dynamic Programming", chosen: true },
+  { name: "Binary Search", chosen: true },
+  { name: "Binary Tree", chosen: true },
+  { name: "Linked List", chosen: true },
+  { name: "Stack", chosen: true },
+  { name: "Graph", chosen: true },
+  { name: "Heap", chosen: true },
+  { name: "Binary Search Tree", chosen: true },
+  { name: "Recursion", chosen: true },
+  { name: "Matrix", chosen: true },
+  { name: "Queue", chosen: true },
+  { name: "Math", chosen: true },
+  { name: "Trie", chosen: true },
+  { name: "Binary", chosen: true },
+  
+]
