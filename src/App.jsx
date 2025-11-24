@@ -3,14 +3,15 @@ import { BrowserRouter } from 'react-router-dom'
 import './App.css'
 import Header from './Header'
 import SearchPage from './SearchPage'
+import Body from './Body'
 
 const TestElement = () => {
   return (
     <>
       <Header>
       </Header>
-      <SearchPage>
-      </SearchPage>
+      <Body>
+      </Body>
     </>
   )
 }
