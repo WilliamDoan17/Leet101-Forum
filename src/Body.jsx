@@ -1,5 +1,6 @@
 import styles from './Body.module.css'
 import Preferences from './Preferences'
+import { PreferenceProvider } from './usePreference'
 
 const Body = () => {
     return (
@@ -7,7 +8,10 @@ const Body = () => {
             <div
                 className = {`${styles['container']}`}
             >
-                <Preferences></Preferences>
+                <PreferenceProvider>
+                    <Preferences>
+                    </Preferences>
+                </PreferenceProvider>
             </div>  
         </>
     )    
