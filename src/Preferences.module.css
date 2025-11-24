@@ -29,3 +29,23 @@
     line-height: 1rem;
     color: white;
 }
+
+.keyword-label {
+    margin-bottom: .75rem;
+    padding: 0;
+    font-size: .75rem;
+    font-weight: 700;
+    line-height: 1rem;
+    text-transform: uppercase;
+    color: #000;
+}
+
+.keyword-input {
+    outline: none;
+    border: none;
+    border-radius: 8px;
+    padding: .25rem .5rem;
+    width: 100%;
+    background-color: rgb(209 213 219);
+    color: black;
+}
