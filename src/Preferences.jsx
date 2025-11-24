@@ -1,4 +1,19 @@
+import { useState } from 'react'
 import styles from './Preferences.module.css'
+
+const KeywordPreference = () => {
+    const [keyword, setKeyword] = useState('');
+
+    return (
+        <>
+            <div
+                className = {`${styles['preference-container']}`} 
+            >
+                
+            </div>
+        </>
+    )
+}
 
 const Preferences = () => {
     return (
