@@ -49,12 +49,13 @@
 
 .result-card {
     border: 1px solid rgb(209 213 219);
-    padding: .5rem .75rem;
+    padding: 1rem 1.5rem;
     display: flex;
     flex-direction: row;
     align-items: center;
     width: 100%;
     font-weight: 500;
+    cursor: pointer;
 }
 
 .result-index {
@@ -92,6 +93,7 @@
 .result-tag-container {
     display: flex;
     flex-direction: row;
+    align-items: center;
     gap: 1rem;
 }
 
@@ -100,4 +102,25 @@
     font-weight: 500;
     line-height: .875rem;
     text-transform: capitalize;
+}
+
+.topic-tag {
+    border-radius: 9999px;
+    padding: .125rem .625rem;
+    display: flex;
+    flex-direction: row;
+    background-color: #f3f4f6;
+    align-items: center;
+    font-size: .75rem;
+    font-weight: 500;
+    line-height: 1rem;
+    color: #1f2937;
+    text-transform: capitalize;
+}
+
+.result-arrow {
+    font-size: 1.5rem;
+    opacity: 0.4;
+    cursor: default;
+    user-select: none;
 }

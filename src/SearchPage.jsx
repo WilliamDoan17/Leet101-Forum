@@ -1,10 +1,12 @@
 import { useContext } from 'react'
 import styles from './SearchPage.module.css'
 import { PreferenceContext } from './usePreference'
+import { useNavigate } from 'react-router-dom';
 
 const ResultCard = ({ problem, index }) => {
-    const {name, difficulty, topic} = problem;
-    const { difficulties } = useContext(PreferenceContext)
+    const {name, difficulty, topic, source} = problem;
+    const { difficulties } = useContext(PreferenceContext);
+    const navigate = useNavigate();
 
     const getDiffifcultyLabelColor = () => {
         const { labelColor } = difficulties.find(({ level }) => level === difficulty);
@@ -28,10 +30,25 @@ const ResultCard = ({ problem, index }) => {
         )
     }
 
+    const TopicTag = () => {
+        return (
+            <span
+                className = {`${styles['topic-tag']}`}
+            >
+                {topic}
+            </span>
+        )
+    }
+
+    const handleClick = () => {
+        navigate(`solution/${name}`)
+    }
+
     return (
         <>
             <div
                 className = {`${styles['result-card']}`}
+                onClick = {handleClick}
             >
                 <span
                     className = {`${styles['result-index']}`}
@@ -43,7 +60,9 @@ const ResultCard = ({ problem, index }) => {
                 >
                     <a
                         className = {`${styles['result-name']}`}
-                        href = {`/solution/${name}`}
+                        href = {source}
+                        target = '_blank'
+                        onClick = {(e) => e.stopPropagation()}
                     >
                         {name}
                     </a>
@@ -52,10 +71,16 @@ const ResultCard = ({ problem, index }) => {
                     >
                         <DifficultyTag>
                         </DifficultyTag>
+                        <TopicTag>
+                        </TopicTag>
                     </div>
+                    
                 </div>
-                
-
+                <span
+                    className = {`${styles['result-arrow']}`}
+                >
+                    {'>'}
+                </span>
             </div>
         </>
     )
