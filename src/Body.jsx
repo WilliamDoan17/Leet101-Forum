@@ -3,6 +3,7 @@ import Preferences from './Preferences'
 import { PreferenceProvider } from './usePreference'
 import { useNavigate, Route, Routes } from 'react-router-dom'
 import SearchPage from './SearchPage'
+import SolutionPage from './SolutionPage'
 
 const Body = () => {
     const navigate = useNavigate();
@@ -20,6 +21,16 @@ const Body = () => {
                             path = "/"
                             element = {
                                 <SearchPage></SearchPage>
+                            }
+                        ></Route>
+                        <Route
+                            path = "/solution/:name"
+                            element = {
+                                <>
+                                    <SolutionPage
+                                    >
+                                    </SolutionPage>
+                                </>
                             }
                         ></Route>
                     </Routes>

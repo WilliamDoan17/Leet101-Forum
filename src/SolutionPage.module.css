@@ -1,0 +1,27 @@
+.container {
+    padding: 1.5rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    background-color: rgb(249, 250, 251);
+}
+
+.back-button {
+    font-size: .875rem;
+    font-weight: 400;
+    color: rgb(79 70 229);
+    user-select: none;
+    cursor: pointer;
+}
+
+.back-button:hover {
+    text-decoration: underline;
+}
+
+.solution-heading {
+    margin: .5rem 0 0 0;
+    font-size: 3rem;
+    font-weight: 700;
+    line-height: 1;
+}
+

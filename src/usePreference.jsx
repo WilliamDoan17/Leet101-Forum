@@ -46,10 +46,22 @@ export const PreferenceProvider = ({ children }) => {
         }));
     }
 
+    const getProblemMap = (problems) => {
+        const resultingMap = new Map();
+
+        problems.forEach(problem => {
+            resultingMap.set(problem.name, problem);
+        });
+
+        return resultingMap
+    }
+    const [problemMap, setProblemMap] = useState(getProblemMap(initialProblems));
+
     useEffect(() => {
         const newProblems = getProblemsFromPreferences(keyword, difficulties, topics, problems);
+        setProblemMap(getProblemMap(newProblems));
         setProblems(newProblems);
-        navigate("/");
+        navigate("/")
     }, [keyword, difficulties, topics]);
 
     const contextValue = {
@@ -61,6 +73,8 @@ export const PreferenceProvider = ({ children }) => {
         setTopics,
         problems,
         setProblems,
+        problemMap,
+        setProblemMap
     };
 
     return (

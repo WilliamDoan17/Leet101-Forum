@@ -399,3 +399,5 @@ export const initialProblems = [
   { name: "Divide Two Integers", difficulty: "hard", topic: "Binary", source: "https://leetcode.com/problems/divide-two-integers/" },
   { name: "Maximum Product of Word Lengths", difficulty: "hard", topic: "Binary", source: "https://leetcode.com/problems/maximum-product-of-word-lengths/" }
 ];
+
+import { solutions } from "./solutions";

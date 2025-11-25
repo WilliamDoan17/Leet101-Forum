@@ -1,10 +1,12 @@
 import { useContext, useState } from 'react'
 import styles from './Preferences.module.css'
 import { PreferenceContext } from './usePreference';
+import { useNavigate } from 'react-router-dom';
 
 const KeywordPreference = () => {
     const { keyword, setKeyword } = useContext(PreferenceContext);
     const [keywordInput, setKeywordInput] = useState(keyword);
+    const navigate = useNavigate();
 
     const handleKeywordChange = (e) => {
         setKeywordInput(e.target.value)
@@ -13,6 +15,7 @@ const KeywordPreference = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         setKeyword(keywordInput)
+        navigate("/")
     }
 
     return (
@@ -40,6 +43,7 @@ const KeywordPreference = () => {
                         onChange = {handleKeywordChange}
                     >
                     </input>
+                    
                 </form>
             </div>
         </>

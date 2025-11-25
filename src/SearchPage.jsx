@@ -97,7 +97,6 @@ const SearchPage = () => {
     }
 
     const dipslayProblems = getDisplayProblems();
-    console.log(dipslayProblems)
 
     return (
         <>
