@@ -3,7 +3,7 @@
     display: flex;
     flex-direction: column;
     flex: 1;
-    background-color: rgb(249, 250, 251);
+    background-color: #f9fafb;
 }
 
 .back-button {
@@ -18,10 +18,70 @@
     text-decoration: underline;
 }
 
-.solution-heading {
+.heading {
     margin: .5rem 0 0 0;
     font-size: 3rem;
     font-weight: 700;
     line-height: 1;
+}
+
+.solution-container {
+    margin: 2.5rem 0 0 0;
+    border: 1px solid black;
+    padding: 1rem;
+    background-color: white;
+}
+
+.solution-info {
+    font-size: .875rem;
+    opacity: .875;
+}
+
+.solution-container-heading {
+    margin: 0;
+    font-size: 1.75rem;
+    font-weight: 700;
+    line-height: 1.5;
+    color: black;
+    text-transform: capitalize;
+    opacity: .875;
+}
+
+.solution-container-heading:not(:first) {
+    margin: .5rem 0 0 0;
+}
+
+.solution-container-para {
+    margin: 0;
+    opacity: 0.875;
+}
+
+.solution-code {
+    margin: .25rem 0;
+    padding: .75rem 1rem;
+    background-color: rgb(240, 240, 240);
+}
+
+.comments-container {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+}
+
+.comments-container-heading {
+    margin: .75rem 0 .25rem 0;
+    font-size: 2rem;
+    opacity: .9;
+}
+
+.comment-card {
+    padding: 1rem 1rem;
+    border: 1px solid rgb(209 213 219);
+    background-color: white;
+}
+
+.comment-author {
+    margin: 0;
 }
 
