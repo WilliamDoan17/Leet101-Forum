@@ -61,7 +61,7 @@ export const PreferenceProvider = ({ children }) => {
         const newProblems = getProblemsFromPreferences(keyword, difficulties, topics, problems);
         setProblemMap(getProblemMap(newProblems));
         setProblems(newProblems);
-        navigate("search")
+        navigate("/search")
     }, [keyword, difficulties, topics]);
 
     const contextValue = {
