@@ -14,7 +14,7 @@ const SolutionPage = () => {
     const { author, explanation, solution, notes, comments } = solutionMap.get(name);
 
     const handleBack = () => {
-        navigate('/');
+        navigate('/search');
     }
 
     const SolutionContainer = () => {

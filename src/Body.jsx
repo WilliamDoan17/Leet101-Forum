@@ -25,13 +25,13 @@ const Body = () => {
                     </Preferences>
                     <Routes>
                         <Route
-                            path = "/search"
+                            path = "search"
                             element = {
                                 <SearchPage></SearchPage>
                             }
                         ></Route>
                         <Route
-                            path = "/solution/:name"
+                            path = "solution/:name"
                             element = {
                                 <>
                                     <SolutionPage

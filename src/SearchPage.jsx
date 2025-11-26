@@ -41,7 +41,7 @@ const ResultCard = ({ problem, index }) => {
     }
 
     const handleClick = () => {
-        navigate(`solution/${name}`)
+        navigate(`/solution/${name}`)
     }
 
     return (
