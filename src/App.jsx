@@ -4,6 +4,7 @@ import './App.css'
 import Header from './Header'
 import SearchPage from './SearchPage'
 import Body from './Body'
+import Footer from './Footer'
 
 const TestElement = () => {
   return (
@@ -12,6 +13,8 @@ const TestElement = () => {
       </Header>
       <Body>
       </Body>
+      <Footer>
+      </Footer>
     </>
   )
 }

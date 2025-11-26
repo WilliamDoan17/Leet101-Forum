@@ -24,7 +24,7 @@ const SolutionPage = () => {
                     className = {`${styles['solution-container']}`}
                 >
                     <span
-                        className = {`${styles['solution-info']}`}
+                        className = {`${styles['solution-author']}`}
                     >
                         Written by: {author}
                     </span>
@@ -76,9 +76,14 @@ const SolutionPage = () => {
                     className = {`${styles['comment-card']}`}
                 >
                     <p
-                        classname = {`${styles['comment-author']}`}
+                        className = {`${styles['comment-author']}`}
                     >
                         {author}
+                    </p>
+                    <p
+                        className = {`${styles['comment-content']}`}
+                    >
+                        {content}
                     </p>
                 </div>
             </>
@@ -101,6 +106,7 @@ const SolutionPage = () => {
                 >
                     {name}
                 </h1>
+                
                 <SolutionContainer>
                 </SolutionContainer>
                 <h2
