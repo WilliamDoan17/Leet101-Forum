@@ -6,28 +6,22 @@ import SearchPage from './SearchPage'
 import Body from './Body'
 import Footer from './Footer'
 
-const TestElement = () => {
-  return (
-    <>
-      <Header>
-      </Header>
-      <Body>
-      </Body>
-      <Footer>
-      </Footer>
-    </>
-  )
-}
-
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <>
-      <BrowserRouter>
-        <TestElement>
-        </TestElement>
-      </BrowserRouter>
+      <div
+        className = 'app-container'
+      >
+        <BrowserRouter>
+          <Header>
+          </Header>
+          <Body>
+          </Body>
+          <Footer>
+          </Footer>
+        </BrowserRouter>
+      </div>
+      
     </>
   )
 }

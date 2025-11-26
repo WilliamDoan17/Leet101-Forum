@@ -16076,7 +16076,1307 @@ public:
       }
     ]
   },
-  
+  // ===== MATH PROBLEMS =====
+  {
+    problemName: "Fizz Buzz",
+    author: "Conditional String Generator",
+    explanation: "Iterate through numbers, check divisibility by 3 and 5 to determine the appropriate string output for each number.",
+    solution: `class Solution {
+public:
+    vector<string> fizzBuzz(int n) {
+        vector<string> result;
+        
+        for (int i = 1; i <= n; i++) {
+            if (i % 3 == 0 && i % 5 == 0) {
+                result.push_back("FizzBuzz");
+            } else if (i % 3 == 0) {
+                result.push_back("Fizz");
+            } else if (i % 5 == 0) {
+                result.push_back("Buzz");
+            } else {
+                result.push_back(to_string(i));
+            }
+        }
+        
+        return result;
+    }
+};`,
+    notes: "Time: O(n), Space: O(1) excluding output",
+    comments: [
+      {
+        author: "MathMaster",
+        content: "Straightforward conditional logic handles all divisibility cases"
+      },
+      {
+        author: "CodeReviewer42",
+        content: "Clean implementation with proper order of condition checks"
+      },
+      {
+        author: "EdgeCaseHunter",
+        content: "Handles edge case n=1 correctly and avoids string concatenation overhead"
+      },
+      {
+        author: "AlternativeThinker",
+        content: "Could use string building to avoid multiple condition checks"
+      }
+    ]
+  },
+  {
+    problemName: "Count Primes",
+    author: "Sieve of Eratosthenes Implementer",
+    explanation: "Use Sieve of Eratosthenes algorithm to mark non-prime numbers, then count remaining primes.",
+    solution: `class Solution {
+public:
+    int countPrimes(int n) {
+        if (n <= 2) return 0;
+        
+        vector<bool> isPrime(n, true);
+        isPrime[0] = isPrime[1] = false;
+        
+        // Sieve of Eratosthenes
+        for (int i = 2; i * i < n; i++) {
+            if (isPrime[i]) {
+                for (int j = i * i; j < n; j += i) {
+                    isPrime[j] = false;
+                }
+            }
+        }
+        
+        // Count primes
+        int count = 0;
+        for (int i = 2; i < n; i++) {
+            if (isPrime[i]) {
+                count++;
+            }
+        }
+        
+        return count;
+    }
+};`,
+    notes: "Time: O(n log log n), Space: O(n)",
+    comments: [
+      {
+        author: "MathMaster",
+        content: "Sieve of Eratosthenes is the most efficient algorithm for counting primes up to n"
+      },
+      {
+        author: "CodeReviewer42",
+        content: "Optimized implementation that starts marking from i*i"
+      },
+      {
+        author: "EdgeCaseHunter",
+        content: "Handles edge cases n=0,1,2 correctly and efficiently"
+      },
+      {
+        author: "AlternativeThinker",
+        content: "Segmented sieve could reduce memory usage for very large n"
+      }
+    ]
+  },
+  {
+    problemName: "Power of Three",
+    author: "Mathematical Constraints Explorer",
+    explanation: "Check if n is positive and divide repeatedly by 3 until reaching 1, ensuring no remainder at each step.",
+    solution: `class Solution {
+public:
+    bool isPowerOfThree(int n) {
+        if (n <= 0) return false;
+        
+        while (n % 3 == 0) {
+            n /= 3;
+        }
+        
+        return n == 1;
+    }
+};`,
+    notes: "Time: O(log₃n), Space: O(1)",
+    comments: [
+      {
+        author: "MathMaster",
+        content: "Simple iterative division efficiently checks power of three property"
+      },
+      {
+        author: "CodeReviewer42",
+        content: "Clean implementation with early termination on non-divisible numbers"
+      },
+      {
+        author: "EdgeCaseHunter",
+        content: "Handles negative numbers and zero correctly"
+      },
+      {
+        author: "AlternativeThinker",
+        content: "Could use mathematical approach: n > 0 && 3^19 % n == 0 for 32-bit integers"
+      }
+    ]
+  },
+  {
+    problemName: "Factorial Trailing Zeroes",
+    author: "Prime Factor Counter",
+    explanation: "Count factors of 5 in n! since trailing zeroes come from pairs of 2 and 5, and factors of 5 are always fewer.",
+    solution: `class Solution {
+public:
+    int trailingZeroes(int n) {
+        int count = 0;
+        
+        // Count factors of 5 in n!
+        while (n > 0) {
+            n /= 5;
+            count += n;
+        }
+        
+        return count;
+    }
+};`,
+    notes: "Time: O(log₅n), Space: O(1)",
+    comments: [
+      {
+        author: "MathMaster",
+        content: "Mathematical insight: trailing zeroes = number of factor 5 pairs in prime factorization"
+      },
+      {
+        author: "CodeReviewer42",
+        content: "Elegant iterative division that counts all 5 factors including multiples"
+      },
+      {
+        author: "EdgeCaseHunter",
+        content: "Handles edge case n=0 correctly and works for large n efficiently"
+      },
+      {
+        author: "AlternativeThinker",
+        content: "Recursive approach also works but iterative is more space efficient"
+      }
+    ]
+  },
+  {
+    problemName: "Excel Sheet Column Number",
+    author: "Base-26 Number Converter",
+    explanation: "Treat column title as base-26 number where A=1, B=2, ..., Z=26, and convert to decimal.",
+    solution: `class Solution {
+public:
+    int titleToNumber(string columnTitle) {
+        int result = 0;
+        
+        for (char c : columnTitle) {
+            result = result * 26 + (c - 'A' + 1);
+        }
+        
+        return result;
+    }
+};`,
+    notes: "Time: O(n), Space: O(1)",
+    comments: [
+      {
+        author: "MathMaster",
+        content: "Base conversion algorithm adapted for base-26 with A=1 instead of 0"
+      },
+      {
+        author: "CodeReviewer42",
+        content: "Clean implementation using Horner's method for polynomial evaluation"
+      },
+      {
+        author: "EdgeCaseHunter",
+        content: "Handles single character columns and multi-character columns correctly"
+      },
+      {
+        author: "AlternativeThinker",
+        content: "Could use pow() function but this approach is more efficient"
+      }
+    ]
+  },
+  {
+    problemName: "Pow(x, n)",
+    author: "Binary Exponentiation Expert",
+    explanation: "Use binary exponentiation (exponentiation by squaring) to compute power in O(log n) time by halving exponent repeatedly.",
+    solution: `class Solution {
+public:
+    double myPow(double x, int n) {
+        long long N = n;
+        if (N < 0) {
+            x = 1 / x;
+            N = -N;
+        }
+        
+        double result = 1.0;
+        double current = x;
+        
+        while (N > 0) {
+            if (N % 2 == 1) {
+                result *= current;
+            }
+            current *= current;
+            N /= 2;
+        }
+        
+        return result;
+    }
+};`,
+    notes: "Time: O(log n), Space: O(1)",
+    comments: [
+      {
+        author: "MathMaster",
+        content: "Binary exponentiation reduces time complexity from O(n) to O(log n)"
+      },
+      {
+        author: "CodeReviewer42",
+        content: "Clean implementation handling negative exponents and integer overflow"
+      },
+      {
+        author: "EdgeCaseHunter",
+        content: "Handles edge cases like n=0, n=INT_MIN correctly"
+      },
+      {
+        author: "AlternativeThinker",
+        content: "Recursive approach also works but iterative avoids stack overflow"
+      }
+    ]
+  },
+  {
+    problemName: "Max Points on a Line",
+    author: "Slope Frequency Analyzer",
+    explanation: "For each point, calculate slopes to all other points, use hash map to count points with same slope (same line).",
+    solution: `class Solution {
+public:
+    int maxPoints(vector<vector<int>>& points) {
+        int n = points.size();
+        if (n <= 2) return n;
+        
+        int maxPoints = 1;
+        
+        for (int i = 0; i < n; i++) {
+            unordered_map<string, int> slopeCount;
+            int duplicate = 1; // Count the current point itself
+            
+            for (int j = i + 1; j < n; j++) {
+                int x1 = points[i][0], y1 = points[i][1];
+                int x2 = points[j][0], y2 = points[j][1];
+                
+                if (x1 == x2 && y1 == y2) {
+                    duplicate++;
+                    continue;
+                }
+                
+                string slope;
+                int dx = x2 - x1;
+                int dy = y2 - y1;
+                
+                // Reduce slope to simplest form using gcd
+                int g = gcd(dx, dy);
+                dx /= g;
+                dy /= g;
+                
+                // Handle negative slopes consistently
+                if (dx < 0) {
+                    dx = -dx;
+                    dy = -dy;
+                }
+                
+                slope = to_string(dy) + "/" + to_string(dx);
+                slopeCount[slope]++;
+            }
+            
+            maxPoints = max(maxPoints, duplicate);
+            for (auto& [slope, count] : slopeCount) {
+                maxPoints = max(maxPoints, count + duplicate);
+            }
+        }
+        
+        return maxPoints;
+    }
+    
+private:
+    int gcd(int a, int b) {
+        while (b != 0) {
+            int temp = b;
+            b = a % b;
+            a = temp;
+        }
+        return a;
+    }
+};`,
+    notes: "Time: O(n²), Space: O(n)",
+    comments: [
+      {
+        author: "MathMaster",
+        content: "Slope comparison with gcd ensures accurate line detection avoiding floating point issues"
+      },
+      {
+        author: "CodeReviewer42",
+        content: "Good handling of duplicate points and vertical/horizontal lines"
+      },
+      {
+        author: "EdgeCaseHunter",
+        content: "Handles edge cases with duplicate points and small input sizes"
+      },
+      {
+        author: "AlternativeThinker",
+        content: "Could use pair<int,int> for slope instead of string for better performance"
+      }
+    ]
+  },
+
+  // ===== TRIE PROBLEMS =====
+  {
+    problemName: "Implement Trie (Prefix Tree)",
+    author: "Trie Data Structure Designer",
+    explanation: "Implement trie with nodes containing children array and end-of-word flag. Support insert, search, and startsWith operations.",
+    solution: `class TrieNode {
+public:
+    vector<TrieNode*> children;
+    bool isEnd;
+    
+    TrieNode() {
+        children = vector<TrieNode*>(26, nullptr);
+        isEnd = false;
+    }
+};
+
+class Trie {
+private:
+    TrieNode* root;
+    
+public:
+    Trie() {
+        root = new TrieNode();
+    }
+    
+    void insert(string word) {
+        TrieNode* node = root;
+        for (char c : word) {
+            int index = c - 'a';
+            if (node->children[index] == nullptr) {
+                node->children[index] = new TrieNode();
+            }
+            node = node->children[index];
+        }
+        node->isEnd = true;
+    }
+    
+    bool search(string word) {
+        TrieNode* node = root;
+        for (char c : word) {
+            int index = c - 'a';
+            if (node->children[index] == nullptr) {
+                return false;
+            }
+            node = node->children[index];
+        }
+        return node->isEnd;
+    }
+    
+    bool startsWith(string prefix) {
+        TrieNode* node = root;
+        for (char c : prefix) {
+            int index = c - 'a';
+            if (node->children[index] == nullptr) {
+                return false;
+            }
+            node = node->children[index];
+        }
+        return true;
+    }
+};`,
+    notes: "Time: O(L) per operation, Space: O(AL) where A=26, L=word length",
+    comments: [
+      {
+        author: "TrieMaster",
+        content: "Classic trie implementation with efficient prefix searching"
+      },
+      {
+        author: "CodeReviewer42",
+        content: "Clean separation of TrieNode and Trie classes with proper memory management"
+      },
+      {
+        author: "EdgeCaseHunter",
+        content: "Handles empty strings and non-existent words correctly"
+      },
+      {
+        author: "AlternativeThinker",
+        content: "Could use unordered_map for children to support larger character sets"
+      }
+    ]
+  },
+  {
+    problemName: "Add and Search Word",
+    author: "Wildcard Trie Searcher",
+    explanation: "Extend trie to support wildcard '.' searches using DFS when encountering wildcard characters.",
+    solution: `class WordDictionary {
+private:
+    struct TrieNode {
+        vector<TrieNode*> children;
+        bool isEnd;
+        
+        TrieNode() {
+            children = vector<TrieNode*>(26, nullptr);
+            isEnd = false;
+        }
+    };
+    
+    TrieNode* root;
+    
+    bool searchInNode(string& word, int index, TrieNode* node) {
+        if (index == word.length()) {
+            return node->isEnd;
+        }
+        
+        char c = word[index];
+        if (c == '.') {
+            // Search all possible children
+            for (TrieNode* child : node->children) {
+                if (child != nullptr && searchInNode(word, index + 1, child)) {
+                    return true;
+                }
+            }
+            return false;
+        } else {
+            int childIndex = c - 'a';
+            if (node->children[childIndex] == nullptr) {
+                return false;
+            }
+            return searchInNode(word, index + 1, node->children[childIndex]);
+        }
+    }
+    
+public:
+    WordDictionary() {
+        root = new TrieNode();
+    }
+    
+    void addWord(string word) {
+        TrieNode* node = root;
+        for (char c : word) {
+            int index = c - 'a';
+            if (node->children[index] == nullptr) {
+                node->children[index] = new TrieNode();
+            }
+            node = node->children[index];
+        }
+        node->isEnd = true;
+    }
+    
+    bool search(string word) {
+        return searchInNode(word, 0, root);
+    }
+};`,
+    notes: "Time: O(26^L) worst case with wildcards, O(L) without, Space: O(AL)",
+    comments: [
+      {
+        author: "TrieMaster",
+        content: "DFS handles wildcard searches by exploring all possible paths"
+      },
+      {
+        author: "CodeReviewer42",
+        content: "Clean recursive implementation for wildcard searching"
+      },
+      {
+        author: "EdgeCaseHunter",
+        content: "Handles multiple consecutive wildcards and words with only wildcards"
+      },
+      {
+        author: "AlternativeThinker",
+        content: "BFS approach also works but DFS is more memory efficient"
+      }
+    ]
+  },
+  {
+    problemName: "Word Search II",
+    author: "Trie-Backed Grid Explorer",
+    explanation: "Use trie to store all words, then DFS on grid to find words, using trie for early termination of invalid paths.",
+    solution: `class Solution {
+private:
+    struct TrieNode {
+        vector<TrieNode*> children;
+        string word;
+        
+        TrieNode() {
+            children = vector<TrieNode*>(26, nullptr);
+            word = "";
+        }
+    };
+    
+    TrieNode* buildTrie(vector<string>& words) {
+        TrieNode* root = new TrieNode();
+        for (string word : words) {
+            TrieNode* node = root;
+            for (char c : word) {
+                int index = c - 'a';
+                if (node->children[index] == nullptr) {
+                    node->children[index] = new TrieNode();
+                }
+                node = node->children[index];
+            }
+            node->word = word;
+        }
+        return root;
+    }
+    
+    void dfs(vector<vector<char>>& board, int i, int j, TrieNode* node, vector<string>& result) {
+        char c = board[i][j];
+        if (c == '#' || node->children[c - 'a'] == nullptr) return;
+        
+        node = node->children[c - 'a'];
+        if (node->word != "") {
+            result.push_back(node->word);
+            node->word = ""; // Avoid duplicates
+        }
+        
+        board[i][j] = '#'; // Mark visited
+        
+        // Explore neighbors
+        if (i > 0) dfs(board, i - 1, j, node, result);
+        if (j > 0) dfs(board, i, j - 1, node, result);
+        if (i < board.size() - 1) dfs(board, i + 1, j, node, result);
+        if (j < board[0].size() - 1) dfs(board, i, j + 1, node, result);
+        
+        board[i][j] = c; // Backtrack
+    }
+    
+public:
+    vector<string> findWords(vector<vector<char>>& board, vector<string>& words) {
+        vector<string> result;
+        TrieNode* root = buildTrie(words);
+        
+        for (int i = 0; i < board.size(); i++) {
+            for (int j = 0; j < board[0].size(); j++) {
+                dfs(board, i, j, root, result);
+            }
+        }
+        return result;
+    }
+};`,
+    notes: "Time: O(m*n*4^L) where L is max word length, Space: O(AL + m*n)",
+    comments: [
+      {
+        author: "TrieMaster",
+        content: "Trie provides efficient prefix checking to prune invalid search paths early"
+      },
+      {
+        author: "CodeReviewer42",
+        content: "Well-structured with separate trie building and DFS functions"
+      },
+      {
+        author: "EdgeCaseHunter",
+        content: "Handles duplicate word findings by clearing word after first discovery"
+      },
+      {
+        author: "AlternativeThinker",
+        content: "Could use hash set for words but trie is more efficient for prefix checking"
+      }
+    ]
+  },
+  {
+    problemName: "Replace Words",
+    author: "Prefix Replacement Trie",
+    explanation: "Build trie from dictionary, for each word find shortest root prefix in trie and replace with that root.",
+    solution: `class Solution {
+private:
+    struct TrieNode {
+        vector<TrieNode*> children;
+        string word;
+        
+        TrieNode() {
+            children = vector<TrieNode*>(26, nullptr);
+            word = "";
+        }
+    };
+    
+    void insert(TrieNode* root, string word) {
+        TrieNode* node = root;
+        for (char c : word) {
+            int index = c - 'a';
+            if (node->children[index] == nullptr) {
+                node->children[index] = new TrieNode();
+            }
+            node = node->children[index];
+        }
+        node->word = word;
+    }
+    
+    string findRoot(TrieNode* root, string word) {
+        TrieNode* node = root;
+        for (char c : word) {
+            int index = c - 'a';
+            if (node->children[index] == nullptr) {
+                return word; // No root found, return original word
+            }
+            node = node->children[index];
+            if (node->word != "") {
+                return node->word; // Found shortest root
+            }
+        }
+        return word;
+    }
+    
+public:
+    string replaceWords(vector<string>& dictionary, string sentence) {
+        TrieNode* root = new TrieNode();
+        
+        // Build trie from dictionary
+        for (string word : dictionary) {
+            insert(root, word);
+        }
+        
+        stringstream ss(sentence);
+        string word, result;
+        
+        while (ss >> word) {
+            if (!result.empty()) {
+                result += " ";
+            }
+            result += findRoot(root, word);
+        }
+        
+        return result;
+    }
+};`,
+    notes: "Time: O(n + m) where n is total chars in sentence, m in dictionary, Space: O(m)",
+    comments: [
+      {
+        author: "TrieMaster",
+        content: "Trie efficiently finds shortest root prefix for each word"
+      },
+      {
+        author: "CodeReviewer42",
+        content: "Clean implementation with proper string stream handling"
+      },
+      {
+        author: "EdgeCaseHunter",
+        content: "Handles cases where no root exists by returning original word"
+      },
+      {
+        author: "AlternativeThinker",
+        content: "Hash set approach works but doesn't guarantee shortest root"
+      }
+    ]
+  },
+  {
+    problemName: "Map Sum Pairs",
+    author: "Trie with Value Storage",
+    explanation: "Extend trie to store values at each node and support prefix sum calculation by storing cumulative values.",
+    solution: `class MapSum {
+private:
+    struct TrieNode {
+        vector<TrieNode*> children;
+        int value;
+        int sum; // Sum of all values in this subtree
+        
+        TrieNode() {
+            children = vector<TrieNode*>(26, nullptr);
+            value = 0;
+            sum = 0;
+        }
+    };
+    
+    TrieNode* root;
+    unordered_map<string, int> keyValues; // Track previous values for overwrites
+    
+public:
+    MapSum() {
+        root = new TrieNode();
+    }
+    
+    void insert(string key, int val) {
+        int delta = val;
+        if (keyValues.count(key)) {
+            delta = val - keyValues[key];
+        }
+        keyValues[key] = val;
+        
+        TrieNode* node = root;
+        for (char c : key) {
+            int index = c - 'a';
+            if (node->children[index] == nullptr) {
+                node->children[index] = new TrieNode();
+            }
+            node = node->children[index];
+            node->sum += delta;
+        }
+        node->value = val;
+    }
+    
+    int sum(string prefix) {
+        TrieNode* node = root;
+        for (char c : prefix) {
+            int index = c - 'a';
+            if (node->children[index] == nullptr) {
+                return 0;
+            }
+            node = node->children[index];
+        }
+        return node->sum;
+    }
+};`,
+    notes: "Time: O(L) per operation, Space: O(AL)",
+    comments: [
+      {
+        author: "TrieMaster",
+        content: "Trie with sum storage enables efficient prefix sum calculations"
+      },
+      {
+        author: "CodeReviewer42",
+        content: "Smart delta calculation handles key overwrites efficiently"
+      },
+      {
+        author: "EdgeCaseHunter",
+        content: "Handles duplicate key insertions and non-existent prefixes correctly"
+      },
+      {
+        author: "AlternativeThinker",
+        content: "Hash map with prefix iteration also works but is less efficient for long prefixes"
+      }
+    ]
+  },
+  {
+    problemName: "Concatenated Words",
+    author: "Trie Word Composition Checker",
+    explanation: "Build trie from words, then for each word check if it can be formed by concatenating other words using DFS.",
+    solution: `class Solution {
+private:
+    struct TrieNode {
+        vector<TrieNode*> children;
+        bool isEnd;
+        
+        TrieNode() {
+            children = vector<TrieNode*>(26, nullptr);
+            isEnd = false;
+        }
+    };
+    
+    TrieNode* root;
+    
+    void insert(string word) {
+        TrieNode* node = root;
+        for (char c : word) {
+            int index = c - 'a';
+            if (node->children[index] == nullptr) {
+                node->children[index] = new TrieNode();
+            }
+            node = node->children[index];
+        }
+        node->isEnd = true;
+    }
+    
+    bool isConcatenated(string word, int start, int count) {
+        if (start == word.length()) {
+            return count >= 2; // At least two words
+        }
+        
+        TrieNode* node = root;
+        for (int i = start; i < word.length(); i++) {
+            int index = word[i] - 'a';
+            if (node->children[index] == nullptr) {
+                return false;
+            }
+            node = node->children[index];
+            if (node->isEnd) {
+                if (isConcatenated(word, i + 1, count + 1)) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+    
+public:
+    vector<string> findAllConcatenatedWordsInADict(vector<string>& words) {
+        // Sort by length to process shorter words first
+        sort(words.begin(), words.end(), [](const string& a, const string& b) {
+            return a.length() < b.length();
+        });
+        
+        root = new TrieNode();
+        vector<string> result;
+        
+        for (string word : words) {
+            if (word.empty()) continue;
+            
+            if (isConcatenated(word, 0, 0)) {
+                result.push_back(word);
+            }
+            insert(word);
+        }
+        
+        return result;
+    }
+};`,
+    notes: "Time: O(n * L²) where L is max word length, Space: O(AL)",
+    comments: [
+      {
+        author: "TrieMaster",
+        content: "Trie with DFS efficiently checks word concatenation possibilities"
+      },
+      {
+        author: "CodeReviewer42",
+        content: "Smart sorting by length ensures shorter words are available for concatenation checks"
+      },
+      {
+        author: "EdgeCaseHunter",
+        content: "Handles empty words and single-character words correctly"
+      },
+      {
+        author: "AlternativeThinker",
+        content: "Dynamic programming approach also works with similar time complexity"
+      }
+    ]
+  },
+  {
+    problemName: "Palindrome Pairs",
+    author: "Trie Palindrome Finder",
+    explanation: "Build trie with words and their reverses, check for palindrome pairs by matching prefixes and suffixes.",
+    solution: `class Solution {
+private:
+    struct TrieNode {
+        vector<TrieNode*> children;
+        int index;
+        vector<int> palindromeIndices;
+        
+        TrieNode() {
+            children = vector<TrieNode*>(26, nullptr);
+            index = -1;
+        }
+    };
+    
+    bool isPalindrome(string word, int left, int right) {
+        while (left < right) {
+            if (word[left++] != word[right--]) {
+                return false;
+            }
+        }
+        return true;
+    }
+    
+    void addWord(TrieNode* root, string word, int idx) {
+        TrieNode* node = root;
+        
+        // Check for palindrome suffixes when adding word in reverse
+        for (int i = word.length() - 1; i >= 0; i--) {
+            int index = word[i] - 'a';
+            if (node->children[index] == nullptr) {
+                node->children[index] = new TrieNode();
+            }
+            
+            // If the remaining prefix is palindrome, store index
+            if (isPalindrome(word, 0, i)) {
+                node->palindromeIndices.push_back(idx);
+            }
+            
+            node = node->children[index];
+        }
+        
+        node->index = idx;
+        node->palindromeIndices.push_back(idx); // Empty string is palindrome
+    }
+    
+public:
+    vector<vector<int>> palindromePairs(vector<string>& words) {
+        TrieNode* root = new TrieNode();
+        
+        // Build trie with words in reverse
+        for (int i = 0; i < words.size(); i++) {
+            addWord(root, words[i], i);
+        }
+        
+        vector<vector<int>> result;
+        
+        // Search for palindrome pairs
+        for (int i = 0; i < words.size(); i++) {
+            TrieNode* node = root;
+            string word = words[i];
+            
+            for (int j = 0; j < word.length(); j++) {
+                // Case 1: Current node is a word and remaining suffix is palindrome
+                if (node->index != -1 && node->index != i && 
+                    isPalindrome(word, j, word.length() - 1)) {
+                    result.push_back({i, node->index});
+                }
+                
+                int index = word[j] - 'a';
+                if (node->children[index] == nullptr) {
+                    node = nullptr;
+                    break;
+                }
+                node = node->children[index];
+            }
+            
+            if (node == nullptr) continue;
+            
+            // Case 2: Exact match with reversed words
+            for (int idx : node->palindromeIndices) {
+                if (i != idx) {
+                    result.push_back({i, idx});
+                }
+            }
+        }
+        
+        return result;
+    }
+};`,
+    notes: "Time: O(n * k²) where k is average word length, Space: O(n * k)",
+    comments: [
+      {
+        author: "TrieMaster",
+        content: "Trie with reverse word storage efficiently finds palindrome pairs"
+      },
+      {
+        author: "CodeReviewer42",
+        content: "Complex but comprehensive handling of all palindrome pair cases"
+      },
+      {
+        author: "EdgeCaseHunter",
+        content: "Handles empty strings and single character words correctly"
+      },
+      {
+        author: "AlternativeThinker",
+        content: "Hash map approach also works but trie is more elegant for prefix/suffix matching"
+      }
+    ]
+  },
+  {
+    problemName: "Number of 1 Bits",
+    author: "Bit Manipulation Counter",
+    explanation: "Use bit manipulation to count set bits by repeatedly clearing the least significant set bit using n & (n-1).",
+    solution: `class Solution {
+public:
+    int hammingWeight(uint32_t n) {
+        int count = 0;
+        
+        while (n != 0) {
+            n = n & (n - 1); // Clear the least significant set bit
+            count++;
+        }
+        
+        return count;
+    }
+};`,
+    notes: "Time: O(k) where k is number of set bits, Space: O(1)",
+    comments: [
+      {
+        author: "BitMaster",
+        content: "Brian Kernighan's algorithm efficiently counts set bits by clearing them one by one"
+      },
+      {
+        author: "CodeReviewer42",
+        content: "Clean implementation using the n & (n-1) trick for optimal performance"
+      },
+      {
+        author: "EdgeCaseHunter",
+        content: "Handles zero input correctly and works for all 32-bit unsigned integers"
+      },
+      {
+        author: "AlternativeThinker",
+        content: "Built-in __builtin_popcount also works but this demonstrates the algorithm"
+      }
+    ]
+  },
+  {
+    problemName: "Reverse Bits",
+    author: "Bit Reversal Specialist",
+    explanation: "Reverse bits by extracting each bit from the input and setting it in the corresponding reversed position in the result.",
+    solution: `class Solution {
+public:
+    uint32_t reverseBits(uint32_t n) {
+        uint32_t result = 0;
+        
+        for (int i = 0; i < 32; i++) {
+            // Extract the i-th bit from n
+            uint32_t bit = (n >> i) & 1;
+            // Set the (31-i)-th bit in result
+            result |= (bit << (31 - i));
+        }
+        
+        return result;
+    }
+};`,
+    notes: "Time: O(1), Space: O(1)",
+    comments: [
+      {
+        author: "BitMaster",
+        content: "Bit-by-bit reversal ensures each bit is placed in its correct mirrored position"
+      },
+      {
+        author: "CodeReviewer42",
+        content: "Clean implementation with proper bit shifting and masking"
+      },
+      {
+        author: "EdgeCaseHunter",
+        content: "Handles all possible 32-bit patterns including all zeros and all ones"
+      },
+      {
+        author: "AlternativeThinker",
+        content: "Byte-wise reversal with lookup table could be faster for multiple operations"
+      }
+    ]
+  },
+  {
+    problemName: "Sum of Two Integers",
+    author: "Bitwise Adder",
+    explanation: "Use bitwise operations to simulate addition: XOR for sum without carry, AND for carry, shift carry left and repeat until no carry.",
+    solution: `class Solution {
+public:
+    int getSum(int a, int b) {
+        while (b != 0) {
+            // Calculate carry
+            unsigned int carry = a & b;
+            
+            // Calculate sum without carry
+            a = a ^ b;
+            
+            // Shift carry left by 1 for next iteration
+            b = carry << 1;
+        }
+        
+        return a;
+    }
+};`,
+    notes: "Time: O(1) since 32-bit integers, Space: O(1)",
+    comments: [
+      {
+        author: "BitMaster",
+        content: "Classic bitwise addition algorithm using XOR for sum and AND for carry"
+      },
+      {
+        author: "CodeReviewer42",
+        content: "Clean implementation handling negative numbers through two's complement"
+      },
+      {
+        author: "EdgeCaseHunter",
+        content: "Handles all integer pairs including negative numbers and zero correctly"
+      },
+      {
+        author: "AlternativeThinker",
+        content: "Recursive approach also works but iterative is more space efficient"
+      }
+    ]
+  },
+  {
+    problemName: "Divide Two Integers",
+    author: "Bit Manipulation Divider",
+    explanation: "Use bit manipulation to perform division by repeatedly subtracting the largest possible power of 2 times divisor from dividend.",
+    solution: `class Solution {
+public:
+    int divide(int dividend, int divisor) {
+        // Handle overflow case
+        if (dividend == INT_MIN && divisor == -1) {
+            return INT_MAX;
+        }
+        
+        // Determine sign of result
+        bool negative = (dividend < 0) ^ (divisor < 0);
+        
+        // Convert to positive (use long to handle INT_MIN)
+        long long_dividend = labs(dividend);
+        long long_divisor = labs(divisor);
+        
+        long result = 0;
+        
+        while (long_dividend >= long_divisor) {
+            long temp = long_divisor;
+            long multiple = 1;
+            
+            // Find largest power of 2 * divisor that fits in dividend
+            while (long_dividend >= (temp << 1)) {
+                temp <<= 1;
+                multiple <<= 1;
+            }
+            
+            long_dividend -= temp;
+            result += multiple;
+        }
+        
+        // Apply sign
+        if (negative) {
+            result = -result;
+        }
+        
+        // Handle overflow
+        if (result > INT_MAX) return INT_MAX;
+        if (result < INT_MIN) return INT_MIN;
+        
+        return result;
+    }
+};`,
+    notes: "Time: O(log n), Space: O(1)",
+    comments: [
+      {
+        author: "BitMaster",
+        content: "Bit shifting efficiently finds the largest multiples for fast division"
+      },
+      {
+        author: "CodeReviewer42",
+        content: "Proper handling of integer overflow and negative numbers"
+      },
+      {
+        author: "EdgeCaseHunter",
+        content: "Correctly handles edge cases like INT_MIN division and division by 1"
+      },
+      {
+        author: "AlternativeThinker",
+        content: "Logarithmic approach also works but bit manipulation is more efficient"
+      }
+    ]
+  },
+  {
+    problemName: "Maximum Product of Word Lengths",
+    author: "Bitmask Comparator",
+    explanation: "Convert each word to a bitmask representing its characters, then compare bitmasks to find words with no common characters.",
+    solution: `class Solution {
+public:
+    int maxProduct(vector<string>& words) {
+        int n = words.size();
+        vector<int> bitmasks(n, 0);
+        
+        // Convert each word to bitmask
+        for (int i = 0; i < n; i++) {
+            for (char c : words[i]) {
+                bitmasks[i] |= (1 << (c - 'a'));
+            }
+        }
+        
+        int maxProduct = 0;
+        
+        // Compare all pairs of words
+        for (int i = 0; i < n; i++) {
+            for (int j = i + 1; j < n; j++) {
+                // Check if words have no common characters
+                if ((bitmasks[i] & bitmasks[j]) == 0) {
+                    int product = words[i].length() * words[j].length();
+                    maxProduct = max(maxProduct, product);
+                }
+            }
+        }
+        
+        return maxProduct;
+    }
+};`,
+    notes: "Time: O(n² + n*L) where L is word length, Space: O(n)",
+    comments: [
+      {
+        author: "BitMaster",
+        content: "Bitmask representation allows O(1) common character checking"
+      },
+      {
+        author: "CodeReviewer42",
+        content: "Efficient implementation using bitwise AND for character intersection"
+      },
+      {
+        author: "EdgeCaseHunter",
+        content: "Handles empty words and single character words correctly"
+      },
+      {
+        author: "AlternativeThinker",
+        content: "Could pre-sort by length descending to find large products faster"
+      }
+    ]
+  },
+  {
+    problemName: "Missing Number",
+    author: "XOR Bit Manipulator",
+    explanation: "Use XOR properties: a ^ a = 0 and a ^ 0 = a. XOR all numbers and indices to find the missing number.",
+    solution: `class Solution {
+public:
+    int missingNumber(vector<int>& nums) {
+        int result = nums.size();
+        
+        for (int i = 0; i < nums.size(); i++) {
+            result ^= i;
+            result ^= nums[i];
+        }
+        
+        return result;
+    }
+};`,
+    notes: "Time: O(n), Space: O(1)",
+    comments: [
+      {
+        author: "BitMaster",
+        content: "XOR cancellation property elegantly finds the missing number"
+      },
+      {
+        author: "CodeReviewer42",
+        content: "Clean implementation using XOR to avoid overflow issues"
+      },
+      {
+        author: "EdgeCaseHunter",
+        content: "Handles edge cases like missing 0 or missing last number correctly"
+      },
+      {
+        author: "AlternativeThinker",
+        content: "Sum formula approach also works but may cause integer overflow"
+      }
+    ]
+  },
+  {
+    problemName: "Counting Bits",
+    author: "Dynamic Bit Counter",
+    explanation: "Use dynamic programming: number of 1's in i = number of 1's in i/2 + least significant bit of i.",
+    solution: `class Solution {
+public:
+    vector<int> countBits(int n) {
+        vector<int> result(n + 1, 0);
+        
+        for (int i = 1; i <= n; i++) {
+            // result[i] = result[i >> 1] + (i & 1)
+            result[i] = result[i / 2] + (i % 2);
+        }
+        
+        return result;
+    }
+};`,
+    notes: "Time: O(n), Space: O(1) excluding output",
+    comments: [
+      {
+        author: "BitMaster",
+        content: "DP approach leverages the relationship between a number and its half"
+      },
+      {
+        author: "CodeReviewer42",
+        content: "Elegant recurrence relation that builds solution incrementally"
+      },
+      {
+        author: "EdgeCaseHunter",
+        content: "Handles n=0 correctly and generates all counts in linear time"
+      },
+      {
+        author: "AlternativeThinker",
+        content: "Brian Kernighan's algorithm for each number would be O(n log n)"
+      }
+    ]
+  },
+  {
+    problemName: "Single Number",
+    author: "XOR Duplicate Remover",
+    explanation: "Use XOR to cancel out duplicate numbers since a ^ a = 0, leaving only the single number.",
+    solution: `class Solution {
+public:
+    int singleNumber(vector<int>& nums) {
+        int result = 0;
+        
+        for (int num : nums) {
+            result ^= num;
+        }
+        
+        return result;
+    }
+};`,
+    notes: "Time: O(n), Space: O(1)",
+    comments: [
+      {
+        author: "BitMaster",
+        content: "XOR's commutative and associative properties perfectly solve this problem"
+      },
+      {
+        author: "CodeReviewer42",
+        content: "Extremely concise and efficient solution"
+      },
+      {
+        author: "EdgeCaseHunter",
+        content: "Works for any input size and handles negative numbers correctly"
+      },
+      {
+        author: "AlternativeThinker",
+        content: "Hash set approach works but uses O(n) space"
+      }
+    ]
+  }
 ];
 
 console.log(solutions)

@@ -1,12 +1,19 @@
 import styles from './Body.module.css'
 import Preferences from './Preferences'
 import { PreferenceProvider } from './usePreference'
-import { useNavigate, Route, Routes } from 'react-router-dom'
+import { useNavigate, Route, Routes, useLocation } from 'react-router-dom'
 import SearchPage from './SearchPage'
 import SolutionPage from './SolutionPage'
+import { useEffect } from 'react'
 
 const Body = () => {
-    const navigate = useNavigate();
+    const location = useLocation();
+
+    useEffect(() => {
+        console.log("Current scroll position:", window.pageYOffset);
+        window.scrollTo(0, 0);
+        console.log("After scroll position:", window.pageYOffset);
+    }, [location.pathname]);
 
     return (
         <>
