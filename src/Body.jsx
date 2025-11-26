@@ -25,7 +25,7 @@ const Body = () => {
                     </Preferences>
                     <Routes>
                         <Route
-                            path = "/"
+                            path = "/search"
                             element = {
                                 <SearchPage></SearchPage>
                             }
