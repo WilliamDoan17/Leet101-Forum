@@ -26,3 +26,23 @@
     font-weight: 500;
     color: #374151;
 }
+
+.navigation {
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    align-items: center;
+    flex: 1;
+    gap: .5rem;
+}
+
+.navigation-button {
+    color: #646cff;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1rem;
+}
+
+.navigation-button:hover {
+    text-decoration: underline;
+}

@@ -3,6 +3,7 @@ import styles from './Header.module.css'
 const Header = () => {
     const author = 'Phong Doan';
     const appName = 'Leet101';
+    const practiceLink = 'https://williamdoan17.github.io/Leet101/'
 
     return (
         <>
@@ -23,6 +24,17 @@ const Header = () => {
                         by {author}
                     </p>
                 </div>
+                <nav
+                    className = {`${styles['navigation']}`}
+                >
+                    <a
+                        className = {`${styles['navigation-button']}`}
+                        href = {practiceLink}
+                        target = '_blank'
+                    >
+                        Practice
+                    </a>
+                </nav>
             </div>
         </>
     )
