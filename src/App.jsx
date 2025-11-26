@@ -12,7 +12,7 @@ function App() {
       <div
         className = 'app-container'
       >
-        <BrowserRouter>
+        <BrowserRouter basename = 'Leet101-Forum'>
           <Header>
           </Header>
           <Body>
